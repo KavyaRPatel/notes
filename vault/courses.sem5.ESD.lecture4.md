@@ -2,7 +2,7 @@
 id: Ku9ciQRvAFPbpZ6Wvt6yp
 title: lecture4
 desc: ''
-updated: 1631496541125
+updated: 1632703444177
 created: 1631491571594
 ---
 ![](/assets/images/2021-09-13-05-46-34.png)
@@ -12,7 +12,7 @@ Question: Write a C program to generate aa square wave of time period 100uSec on
 TCNT0=206 
 TTCR= 0x01 
 
-```json
+```ruby
 #include<avr/io.h>
 
 void timeDelay() {
@@ -51,7 +51,7 @@ int main() {
 }
 ``` 
 ![](/assets/images/2021-09-13-06-52-57.png)
-```json
+```ruby
 #include<avr/io.h>
 
 void T0Delay() {
