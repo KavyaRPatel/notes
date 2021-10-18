@@ -171,7 +171,7 @@
     <meta itemprop="headline" content="lecture4">
     
     <meta itemprop="datePublished" content="2021-09-13T05:36:11+00:00">
-    <meta itemprop="dateModified" content="2021-09-13T06:59:01+00:00">
+    <meta itemprop="dateModified" content="2021-09-27T06:14:04+00:00">
 
     <div class="page__inner-wrap">
 
@@ -186,27 +186,27 @@
 <p>Question: Write a C program to generate aa square wave of time period 100uSec on Pin 1 of Port A. </p>
 <p>TCNT0=206
 TTCR= 0x01 </p>
-<pre class="language-json"><code class="language-json">#include&#x3C;avr/io.h>
+<pre class="language-ruby"><code class="language-ruby"><span class="token comment">#include&#x3C;avr/io.h></span>
 
-void timeDelay() <span class="token punctuation">{</span>
-    TCNT0 = <span class="token number">206</span>; 
-    TCCR0 = 0x01;
-    while((TIFR &#x26; 0x1) == <span class="token number">0</span>); 
-    TCCR0 = <span class="token number">0</span>; 
-    TIFR = 0x1; 
+void timeDelay<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token constant">TCNT0</span> <span class="token operator">=</span> <span class="token number">206</span><span class="token punctuation">;</span> 
+    <span class="token constant">TCCR0</span> <span class="token operator">=</span> <span class="token number">0x01</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token constant">TIFR</span> <span class="token operator">&#x26;</span> <span class="token number">0x1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token constant">TCCR0</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> 
+    <span class="token constant">TIFR</span> <span class="token operator">=</span> <span class="token number">0x1</span><span class="token punctuation">;</span> 
 <span class="token punctuation">}</span>
 
 
-int main() <span class="token punctuation">{</span>
-    DDRA = 0x02;
-    while(<span class="token number">1</span>)
+int main<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token constant">DDRA</span> <span class="token operator">=</span> <span class="token number">0x02</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        PORTA = 0x02;
-        timeDelay();
-        PORTA = 0x00;
-        timeDelay();
+        <span class="token constant">PORTA</span> <span class="token operator">=</span> <span class="token number">0x02</span><span class="token punctuation">;</span>
+        timeDelay<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token constant">PORTA</span> <span class="token operator">=</span> <span class="token number">0x00</span><span class="token punctuation">;</span>
+        timeDelay<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-    return <span class="token number">0</span>;
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <pre class="language-ruby"><code class="language-ruby"><span class="token comment">#include&#x3C;avr/io.h></span>
@@ -222,24 +222,24 @@ int main<span class="token punctuation">(</span><span class="token punctuation">
 <span class="token punctuation">}</span>
 </code></pre>
 <p><img src="/notes/assets/images/2021-09-13-06-52-57.png"></p>
-<pre class="language-json"><code class="language-json">#include&#x3C;avr/io.h>
+<pre class="language-ruby"><code class="language-ruby"><span class="token comment">#include&#x3C;avr/io.h></span>
 
-void T0Delay() <span class="token punctuation">{</span>
-    TCNT0 = <span class="token number">0</span>; <span class="token comment">// TCNT0 = 0</span>
-    OCR0 = <span class="token number">75</span>; <span class="token comment">// OCR0 - TCNT0 = 75</span>
-    TCCR0 = 0x09; <span class="token comment">// CTC mode and no prescaling</span>
-    while( (TIFR &#x26; 0x2) == <span class="token number">0</span>); <span class="token comment">// CHeck 1st bit</span>
-    TCCR0 = <span class="token number">0</span>; <span class="token comment">// Stop clock</span>
-    TIFR = 0x2; <span class="token comment">// Reset</span>
+void <span class="token constant">T0Delay</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token constant">TCNT0</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token operator">/</span><span class="token operator">/</span> <span class="token constant">TCNT0</span> <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token constant">OCR0</span> <span class="token operator">=</span> <span class="token number">75</span><span class="token punctuation">;</span> <span class="token operator">/</span><span class="token operator">/</span> <span class="token constant">OCR0</span> <span class="token operator">-</span> <span class="token constant">TCNT0</span> <span class="token operator">=</span> <span class="token number">75</span>
+    <span class="token constant">TCCR0</span> <span class="token operator">=</span> <span class="token number">0x09</span><span class="token punctuation">;</span> <span class="token operator">/</span><span class="token operator">/</span> <span class="token constant">CTC</span> mode <span class="token keyword">and</span> no prescaling
+    <span class="token keyword">while</span><span class="token punctuation">(</span> <span class="token punctuation">(</span><span class="token constant">TIFR</span> <span class="token operator">&#x26;</span> <span class="token number">0x2</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">/</span><span class="token operator">/</span> <span class="token constant">CHeck</span> <span class="token number">1</span>st bit
+    <span class="token constant">TCCR0</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token operator">/</span><span class="token operator">/</span> <span class="token constant">Stop</span> clock
+    <span class="token constant">TIFR</span> <span class="token operator">=</span> <span class="token number">0x2</span><span class="token punctuation">;</span> <span class="token operator">/</span><span class="token operator">/</span> <span class="token constant">Reset</span>
 <span class="token punctuation">}</span>
 
-int main() <span class="token punctuation">{</span>
-    DDRA = 0x02;
-    while(<span class="token number">1</span>) <span class="token punctuation">{</span>
-        PORTA = PORTA ^ 0x02;
-        T0Delay();
+int main<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token constant">DDRA</span> <span class="token operator">=</span> <span class="token number">0x02</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token constant">PORTA</span> <span class="token operator">=</span> <span class="token constant">PORTA</span> <span class="token operator">^</span> <span class="token number">0x02</span><span class="token punctuation">;</span>
+        <span class="token constant">T0Delay</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-    return <span class="token number">0</span>;
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 </code></pre><span id="navId" data="Ku9ciQRvAFPbpZ6Wvt6yp"></span>

@@ -2,7 +2,7 @@
 id: cQQyfkWfK7K6yReCWFZSl
 title: lecture8
 desc: ''
-updated: 1634539339473
+updated: 1634545064347
 created: 1634536426181
 ---
 
@@ -10,7 +10,7 @@ Common Cathod:Logic 0 turns on the segment and dp=0
 Common Anode: Logic 1 turns on the segment and dp=1
 
 ![](/assets/images/2021-10-18-11-28-40.png)
-````ruby
+````c
 #include<avr/io.h>
 int main()
 {
@@ -24,7 +24,7 @@ int main()
 }
 ````
 ![](/assets/images/2021-10-18-11-30-54.png)
-````ruby
+````c
 #include<avr/io.h>
 int main()
 {
